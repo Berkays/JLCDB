@@ -1,0 +1,10 @@
+{
+    "useTabs": true,
+    "trailingComma": "es5",
+    "semi": true,
+    "printWidth": 120,
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "bracketLine": true,
+    "jsxBracketSameLine": true
+}

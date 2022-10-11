@@ -1,0 +1,261 @@
+html,
+body,
+#root,
+#root > div {
+	height: 100%;
+}
+
+.ka {
+	border: 1px solid #666;
+}
+
+.search-bar {
+	box-sizing: border-box;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+
+	min-width: 700px;
+	max-width: 100%;
+	height: 60px;
+
+	background: #f2f2f2;
+	border: 1px solid #bbbbbb;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 8px;
+
+	/* overflow: hidden; */
+}
+
+.main-category-wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.search-bar .main-category {
+	min-width: 132px;
+	height: 100%;
+
+	background: rgb(25, 135, 84);
+	border-radius: 8px 0px 0px 8px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	white-space: nowrap;
+}
+
+.clear-category-button {
+	width: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	transition: all ease-out 0.18s;
+	overflow: hidden;
+
+	background-color: #ca3a3a;
+}
+
+.clear-category-button .btn-danger {
+	width: 100%;
+	height: 100%;
+	border: 0;
+	border-right: 1px solid #bbb;
+	padding: 0;
+}
+
+.search-bar .main-category-wrapper:hover .clear-category-button {
+	width: 50px;
+	transition: all ease-out 0.18s;
+}
+
+.search-bar .main-category-text {
+	font-family: "Hind Vadodara", sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	letter-spacing: 0.02em;
+
+	color: #fff;
+}
+
+.search-bar .input-area {
+	width: 100%;
+	height: 100%;
+	padding: 4px;
+	background-color: #f2f2f2;
+}
+
+.search-bar .input-area input {
+	height: 100%;
+	width: 100%;
+	padding-left: 1rem;
+	border: 0;
+	background-color: transparent;
+
+	font-family: "JetBrains Mono", monospace;
+}
+
+.search-bar .input-area input:hover {
+	cursor: pointer;
+}
+.search-bar .input-area input:focus {
+	cursor: text;
+}
+
+.search-bar .input-area:hover {
+	background-color: #e5e5e5;
+}
+
+.search-bar .input-area input:focus-visible {
+	outline: none;
+}
+
+.search-bar .button-area {
+	height: 100%;
+	aspect-ratio: 1;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.search-bar .button-area button {
+	height: 100%;
+	width: 100%;
+	border-radius: 0 7px 7px 0;
+	border-left: 1px solid #aaa;
+}
+
+.search-bar .button-area button:focus {
+	box-shadow: none;
+}
+
+.search-bar .button-area i {
+	font-size: 1.7rem;
+}
+
+.react-autosuggest__container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 4px;
+	background-color: #f2f2f2;
+	border-radius: 8px;
+}
+
+.react-autosuggest__input:hover {
+	cursor: pointer;
+}
+
+.react-autosuggest__input:focus {
+	cursor: text;
+}
+
+.react-autosuggest__input {
+	height: 100%;
+	width: 100%;
+	padding-left: 1rem;
+	border: 0;
+	background-color: transparent;
+
+	font-family: "JetBrains Mono", monospace;
+}
+
+.react-autosuggest__input--focused {
+	outline: none;
+	cursor: text;
+}
+
+.react-autosuggest__input--open {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.react-autosuggest__suggestions-container {
+	display: none;
+}
+
+.react-autosuggest__suggestions-container--open {
+	display: block;
+	position: absolute;
+	top: 74px;
+	width: 100%;
+	left: 1px;
+	border: 1px solid #bbb;
+	background-color: #fff;
+	font-size: 16px;
+	font-family: "Hind Vadodara", sans-serif;
+	border-radius: 4px;
+	z-index: 2;
+	max-height: 600px;
+	overflow-y: auto;
+}
+
+.react-autosuggest__suggestions-list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.react-autosuggest__suggestion {
+	cursor: pointer;
+	padding: 10px 20px;
+}
+
+.react-autosuggest__suggestion:hover {
+	background-color: #e5e5e5 !important;
+}
+
+.react-autosuggest__suggestion--highlighted {
+	background-color: #ddd;
+}
+
+.spinner-border {
+	width: 3rem;
+	height: 3rem;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+footer {
+	display: flex;
+	max-height: 96px;
+	width: 100%;
+
+	text-align: center;
+	justify-content: center;
+
+	background-color: #052d40;
+	color: white;
+
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	margin-top: 2rem;
+}
+
+footer .footer-container {
+	display: flex;
+	flex-direction: column;
+
+	align-self: center;
+	font-weight: 700;
+}
+
+footer .footer-container a {
+	color: #bbdfff;
+}
+footer .footer-container span {
+	padding: 0.5rem 0 0.5rem 0;
+}
+
+footer .footer-container svg {
+	width: 24px;
+	height: 24px;
+}

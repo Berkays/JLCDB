@@ -1,0 +1,19 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "Web"
+        },
+        {
+            "path": "CsvParser"
+        },
+        {
+            "path": "QueryEngine"
+        }
+    ],
+    "settings": {
+        "explorer.compactFolders": true
+    }
+}

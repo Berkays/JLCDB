@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VARIANT: 6.0-bullseye-slim
+        NODE_VERSION: lts/*
+    volumes:
+      - ..:/workspace:cached
+      - type: bind
+        source: "${HOME}${USERPROFILE}/.aspnet/https"
+        target: /home/vscode/.aspnet/https
+    command: sleep infinity
+    network_mode: service:db
+  db:
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root

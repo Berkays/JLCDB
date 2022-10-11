@@ -1,0 +1,18 @@
+ARG SDK_VARIANT="6.0.401-bullseye-slim"
+ARG RUNTIME_VARIANT="6.0.9-bullseye-slim"
+FROM mcr.microsoft.com/dotnet/sdk:${SDK_VARIANT} as builder
+
+WORKDIR /usr/src/app
+
+COPY ./CsvParser ./CsvParser
+COPY ./Shared ./Shared
+
+RUN dotnet publish ./CsvParser/CsvParser.csproj -c Release
+
+FROM mcr.microsoft.com/dotnet/runtime:${RUNTIME_VARIANT}
+
+WORKDIR /usr/src/app
+
+COPY --from=builder /usr/src/app/CsvParser/bin/Release/net6.0/publish .
+
+CMD ["./CsvParser"]

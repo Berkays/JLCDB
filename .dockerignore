@@ -1,0 +1,5 @@
+.git
+.devcontainer
+bin/
+obj/
+*.csv

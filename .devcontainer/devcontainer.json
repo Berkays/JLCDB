@@ -1,0 +1,31 @@
+{
+    "name": "C# (.NET)",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspace",
+    "extensions": [
+        "ms-dotnettools.csharp",
+        "eamodio.gitlens",
+        "wix.vscode-import-cost",
+        "esbenp.prettier-vscode",
+        "christian-kohler.path-intellisense",
+        "christian-kohler.npm-intellisense"
+    ],
+    "forwardPorts": [
+        27017
+    ],
+    "remoteEnv": {
+        "ASPNETCORE_Kestrel__Certificates__Default__Password": "berkays",
+        "ASPNETCORE_Kestrel__Certificates__Default__Path": "/home/vscode/.aspnet/https/aspnetapp.pfx"
+    },
+    // 3. Do one of the following depending on your scenario:
+    //    * When using GitHub Codespaces and/or Remote - Containers:
+    //      1. Start the container
+    //      2. Drag ~/.aspnet/https/aspnetapp.pfx into the root of the file explorer
+    //      3. Open a terminal in VS Code and run "mkdir -p /home/vscode/.aspnet/https && mv aspnetapp.pfx /home/vscode/.aspnet/https"
+    //
+    //    * If only using Remote - Containers with a local container, uncomment this line instead:
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": "dotnet restore",
+    "remoteUser": "vscode"
+}

@@ -1,0 +1,45 @@
+ARG SDK_VARIANT="6.0.401-bullseye-slim"
+ARG RUNTIME_VARIANT="6.0.9-bullseye-slim"
+FROM mcr.microsoft.com/dotnet/sdk:${SDK_VARIANT} as builder
+
+ARG NODE_VERSION="lts/*"
+ENV DEBIAN_FRONTEND="noninteractive"
+ENV NVM_DIR /home/node/.nvm
+
+SHELL [ "/bin/bash", "-i", "-c" ]
+
+WORKDIR /usr/src/app
+
+RUN apt-get update \
+    && apt install -y --no-install-recommends curl \
+    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
+    && useradd -m -p node node \
+    && chsh -s /bin/bash node \
+    && su - node -c "touch ~/bash_profile" \
+    && mkdir $NVM_DIR && chown node:node -R $NVM_DIR
+
+USER node
+
+RUN set GIT_SSL_NO_VERIFY=true && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash \
+    && . $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && node --version \
+    && npm --version
+
+COPY ./QueryEngine ./QueryEngine
+COPY ./Web ./Web
+COPY ./Shared ./Shared
+
+USER root
+RUN chown node:node -R /usr/src/app
+
+USER node
+RUN dotnet publish ./Web/Web.csproj -c Release
+
+FROM mcr.microsoft.com/dotnet/aspnet:${RUNTIME_VARIANT}
+
+WORKDIR /usr/src/app
+
+COPY --from=builder /usr/src/app/Web/bin/Release/net6.0/publish .
+
+CMD ["./Web"]
