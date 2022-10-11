@@ -56,7 +56,7 @@ internal sealed class CsvParser
 
         sw.Stop();
 
-        // File.Delete(inputFilePath);
+        File.Delete(inputFilePath);
 
         Console.WriteLine($"Conversion completed ({sw.Elapsed})");
     }
