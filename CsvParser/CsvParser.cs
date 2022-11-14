@@ -13,7 +13,7 @@ namespace JLCDB.Parser;
 
 internal sealed class CsvParser
 {
-    const int BATCH_SIZE = 150000;
+    const int BATCH_SIZE = 100000;
     const string outFile = "encoded.csv";
     static readonly string outFilePath = Path.Combine(Path.GetTempPath(), outFile);
 
