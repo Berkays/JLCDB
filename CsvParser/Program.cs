@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using System.Net.Sockets;
+using MongoDB.Driver;
 using MongoDB.Driver.Core.Compression;
 using MongoDB.Driver.Core.Configuration;
 
@@ -53,6 +54,11 @@ namespace JLCDB.Parser
 
 
             var mongoConfiguration = MongoClientSettings.FromConnectionString(connectionString);
+            mongoConfiguration.ClusterConfigurator = b => b.ConfigureTcp(
+            tcp => tcp.With(
+                socketConfigurator:
+                    (Action<Socket>)
+                    (s => s.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true))));
 
             if (System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString() == "Arm64")
             {
